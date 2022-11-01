@@ -117,7 +117,7 @@ for key, value in data.isna().sum().items():
 pd.DataFrame({'Columnas': with_null.keys(), 'Nulos':with_null.values() })
 
 
-# ## 8) Identifique si existen registros duplicados
+# ### 8) Identifique si existen registros duplicados
 
 # In[10]:
 
@@ -159,7 +159,7 @@ plt.xticks(rotation=75);
 plt.title(f'Boxplot valor por condición {muestras} muestras');
 
 
-# ## Estudio de precio por cuidad y tipo de inmueble
+# ### Estudio de precio por cuidad y tipo de inmueble
 # 
 # Siempre y cuando la muestra total sea representativa (mas de 15 muestras)
 
@@ -203,7 +203,7 @@ def showbycity(departamento, minimo = 11):
     plt.title(f'{dpto} valor por condición, {muestras} muestras')
 
 
-# # Estudio comparativo de variación de precios por cuidad
+# ### Estudio comparativo de variación de precios por cuidad
 
 # In[17]:
 
@@ -219,7 +219,7 @@ print('Omitidos en este punto por cantidad de muestras insuficientes')
 pd.DataFrame({'Departamento': res.keys() , 'Muestras':res.values()})
 
 
-# ## Estudio comparativo de variación de precios por estrato
+# ### Estudio comparativo de variación de precios por estrato
 # Se convierte los valores de estrato a numéricos en una nueva columna, para que muestre los gráficos en orden
 
 # In[18]:
@@ -357,14 +357,14 @@ plt.xlabel('Precios');
 #plt.tick_params(axis='x', length=0)
 
 
-# ## Función para mejorar automáticamente el rango para hacer el estudio, sacando los datos abs
+# ### Función para mejorar automáticamente el rango para hacer el estudio, sacando los datos abs
 # Para ello el rango a utilizar será
 # * límite inferior: Q2-1.5*IQR
 # * Límite superior: Q3+1.5*IQR
 # 
 # Donde Q2: es el cuartil 2, Q3: es el cuartil 3, IQR es el rango intercuartílico 
 
-# ## Función para mejorar el cálculo del número de bins en forma automática
+# ### Función para mejorar el cálculo del número de bins en forma automática
 # 
 # Si bien el número de bins se puede poner de forma manual sería recomendable poder hacerlo de forma automática, para ello se utilizará la fórmula de [Sturge’s rule](https://en.wikipedia.org/wiki/Histogram)
 
@@ -459,7 +459,7 @@ dt.count()
 #dropped
 
 
-# ## Resultado filas sin ningún valor nulo
+# ### Resultado filas sin ningún valor nulo
 
 # In[38]:
 
