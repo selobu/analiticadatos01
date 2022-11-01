@@ -54,8 +54,7 @@ filename = 'Inmuebles_Disponibles_Para_La_Venta.csv'
 
 data = pd.read_csv(filename)
 # se ajusta el precio dividido entre 1000_000 para entender mejor la información
-data['Precio'] = data['Precio']/1000_000
-data.head()
+data['Precio'] = data['Precio']/1000_000;
 
 
 # 2) [x] Plantee una pregunta objetivo
