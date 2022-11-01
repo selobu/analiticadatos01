@@ -41,7 +41,7 @@ import pandas as pd
 
 # ## Solución
 # 
-# 1. Procedimiento para la importación del archivo en formato CSV
+# ### 1) Procedimiento para la importación del archivo en formato CSV
 
 # In[2]:
 
@@ -57,11 +57,11 @@ data = pd.read_csv(filename)
 data['Precio'] = data['Precio']/1000_000;
 
 
-# 2. Plantee una pregunta objetivo
+# ### 2) Plantee una pregunta objetivo
 
 # Describir el mercado actual de viviendas en Colombia comparando el valor de precios por estrato y localidad
 
-# 3. Total, de Registros
+# ### 3) Total, de Registros
 
 # In[4]:
 
@@ -72,7 +72,7 @@ print(f'total registros {totalregistros}')
 data.shape[0]
 
 
-# 4. Total de columnas
+# ### 4) Total de columnas
 
 # In[5]:
 
@@ -81,7 +81,7 @@ totalcolumnas = data.shape[1];
 print(f'total columnas {totalcolumnas}')
 
 
-# 5. Detallado de cada columna
+# ### 5) Detallado de cada columna
 
 # In[6]:
 
@@ -89,7 +89,7 @@ print(f'total columnas {totalcolumnas}')
 data.info()
 
 
-# 6. Identificar cuáles de las columnas son categóricas y numéricas
+# ### 6) Identificar cuáles de las columnas son categóricas y numéricas
 
 # In[7]:
 
@@ -105,7 +105,7 @@ res = dict((key, 'Numérica') if value == 'int64' else (key, 'Categórica') for 
 pd.DataFrame({'Columna': res.keys(),'tipo': res.values()})
 
 
-# 7. Identifique en que columnas existen valores nulos
+# ### 7) Identifique en que columnas existen valores nulos
 
 # In[9]:
 
@@ -117,7 +117,7 @@ for key, value in data.isna().sum().items():
 pd.DataFrame({'Columnas': with_null.keys(), 'Nulos':with_null.values() })
 
 
-# 8. Identifique si existen registros duplicados
+# ## 8) Identifique si existen registros duplicados
 
 # In[10]:
 
@@ -139,7 +139,7 @@ else:
 print(f'El estudio se realizará con {data.shape[0]} filas')
 
 
-# 9. Realice un reporte estadístico de los datos numéricos (media, moda, mediana, desviación estándar, cuartiles, entre otros que considere)
+# ### 9) Realice un reporte estadístico de los datos numéricos (media, moda, mediana, desviación estándar, cuartiles, entre otros que considere)
 
 # In[12]:
 
@@ -240,7 +240,7 @@ data['Estrato_num'] = data.apply(lambda row: mapa[row.Estrato], axis = 1)
 data.head(5)
 
 
-# 10. Identifique columnas con valores erróneos
+# ### 10) Identifique columnas con valores erróneos
 
 # Para este punto uno de los validadores corresponde al área de terreno debe se mayor a cero, también el áre construida. Los reportes de los registros con valores erróneos se haran en archivos locales en formato csv
 
@@ -251,7 +251,7 @@ sin_area = data[data['Area Terreno'] == 0]['Area Terreno'].count();
 print(f'Cantidad de registros sin area {sin_area}')
 
 
-# 11. Utilice gráficos para identificar valores atípicos
+# ### 11) Utilice gráficos para identificar valores atípicos
 # 
 # Ya se pueden visualizar en los puntos representados en los boxplot del punto anterior
 
@@ -268,7 +268,7 @@ plt.xlabel('Estrato')
 ax.set_xticklabels(mapa.keys(), rotation='vertical', fontsize=10);
 
 
-# 12. Realice histogramas de frecuencia
+# ### 12) Realice histogramas de frecuencia
 # 
 # Se graficarán:
 # * Cantidad de reportes por estrato
@@ -406,7 +406,7 @@ plt.ylabel("Cantidad");
 plt.xlabel('Indicador de precios');
 
 
-# 13. Use la herramienta para gráficos para determinar correlación entre variables
+# ### 13 Use la herramienta para gráficos para determinar correlación entre variables
 
 # Del análisis de eliminaron las columnas de área y area construida por tener mas de 400 datos con valor cero
 
@@ -430,7 +430,7 @@ sns.heatmap(corr, linewidths=0.5, annot=True);
 
 # Con base en la gráfica se puede notar que la mayor relación está entre el estrato y el código de la vivienda, sin embargo como este último es solo un consecutivo se puede concluir que por falta de información en cuanto a las áreas no es posible concluir sobre una relación al respecto
 
-# 14. Realice y explique la eliminación de datos nulos y duplicados
+# ### 14) Realice y explique la eliminación de datos nulos y duplicados
 
 # Desde el punto 8 se eliminaron los datos duplicados y en el punto 7 se presentaron las columnas con valores nulos, ahora se procederá a buscar los datos nulos en cuanto al precio
 
@@ -467,8 +467,8 @@ dt.count()
 dt.head(min([10,dt.shape[0]]))
 
 
-# 15. Agrupe columnas que considere pueden generar información importante
-# 16. Cree nuevas columnas a partir de las existentes
+# ### 15) Agrupe columnas que considere pueden generar información importante
+# ### 16) Cree nuevas columnas a partir de las existentes
 
 # Se creará una columna nivel que agrupa las columnas de estrato y barrio
 
@@ -479,7 +479,7 @@ data['Nivel'] = data.apply(lambda row: f'{row.Estrato_num} - {row.Barrio}', axis
 data.head(10)
 
 
-# 17. Identifique columnas que no aportan de acuerdo con su pregunta objetivo
+# ### 17) Identifique columnas que no aportan de acuerdo con su pregunta objetivo
 
 # Acorde con la información analizada se idenfica que las columnas que no aportan para el análisis son 
 # 
@@ -488,7 +488,7 @@ data.head(10)
 # 3. Detalle Disponibilidad
 # 4. Direccion
 
-# 18. Realice conclusiones sobre las variables que considere tienen mayor relevancia
+# ### 18) Realice conclusiones sobre las variables que considere tienen mayor relevancia
 
 # Conclusiones:
 # 
@@ -499,7 +499,7 @@ data.head(10)
 # 5. Para realizar una compra se deberá completar la información de las áreas y tomar una mejor desición con base en la evidencia
 # 
 
-# 19. Dejar documentado usando gráficos y capturas de pantalla todo el proceso realizado.
+# ### 19) Dejar documentado usando gráficos y capturas de pantalla todo el proceso realizado.
 
 # Se hizo por este medio
 
